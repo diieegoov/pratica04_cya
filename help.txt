@@ -1,0 +1,11 @@
+--> Error de ejecución <-- 
+El programa debe tener el siguiente formato a la hora de ejecutarse:
+./p04_code_analyzer code.cc codescheme.txt
+
+Siendo:
+--> "./p04_code_analyzer" el ejecutable del programa
+--> "code.cc" el programa a analizar
+--> "codescheme.txt" el archivo de texto donde se guarda la salida
+
+Repita la ejecución con el formato 
+./p04_code_analyzer code.cc codescheme.txt
