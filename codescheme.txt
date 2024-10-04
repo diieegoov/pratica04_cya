@@ -1,27 +1,27 @@
-PROGRAM: code.cc
+PROGRAM: primes.cc
 DESCRIPTION:
 /**
  * Universidad de La Laguna
- * Escuela Superior de Ingenieria y Tecnologia
- * Informatica Basica
+ * Escuela Superior de Ingeniería y Tecnología
+ * Grado en Ingeniería Informática
+ * Informática Básica
  *
- * @brief Ejercicios de programacion
- * Version 1: Funcion factorial
- *
- * @see https://github.com/IB-2023-2024/IB-class-code-examples/
+ * @author Christopher Expósito
+ * @date 23.nov.2020
+ * @brief Ejercicio de la práctica 7 de la asignatura
+ *        Este programa solicita al usuario un número e imprime en pantalla 
+ *        todos los números primos menores que el introducido
+ * @see https://github.com/fsande/IB-P07-Functions/blob/master/Functions.md
  */
 
 VARIABLES:
-[Line 22] INT: factorial = 1
-[Line 32] INT: limit 
+[Line 23] DOUBLE: number = std::stoi(argv[1])
 
 STATEMENTS:
-[Line 23] LOOP: for
-[Line 34] LOOP: for
+[Line 24] LOOP: for
 
 MAIN:
 TRUE
 
 COMMENTS:
-[Line 1-10] DESCRIPTION
-[Line 15] // Returns the factorial of the argument
+[Line 1-13] DESCRIPTION

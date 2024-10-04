@@ -110,7 +110,7 @@ std::vector<Dual> AlmacenarStatements(std::string archivo) {
 /// @return true si hay main
 bool DecidirMain(std::string programa_entrada) {
   std::fstream programa(programa_entrada);
-  std::regex patron_main(R"(int\s+\bmain\b)");
+  std::regex patron_main(R"(int\s+main\((.*\[?\]?)\)\s*\{)");
   std::string linea;
   bool hay_main{false};
   while(getline(programa, linea)) {
