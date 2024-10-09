@@ -17,15 +17,20 @@
 
 void Usage(int argc, char* argv[]);
 bool IsPrime(int i);
-
-int main(int argc, char* argv[]) {
+int x_1 = 1;
+/**
+ int main(int argc, char* argv[]) {
   Usage(argc, argv);
   int number = std::stoi(argv[1]);
   for (int i = 2; i < number; i++) {
     if (IsPrime(i)) {
       std::cout << "Number " << i << " is prime!" << std::endl;
     } else {
+      switch(number) {
+        std::cout << "hola";
+      }
       std::cout << "Number " << i << " is not prime!" << std::endl;
     }
   }
 }
+*/

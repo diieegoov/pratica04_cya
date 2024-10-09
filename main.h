@@ -87,7 +87,7 @@ std::vector<Dual> AlmacenarVariables(std::string archivo) {
 std::vector<Dual> AlmacenarStatements(std::string archivo) {
   std::fstream programa(archivo);
   // Expresión regular para detectar declaraciones de int
-  std::regex patron_statements(R"(\b(for|while)\b)");
+  std::regex patron_statements(R"(\b(for|while|switch)\b)");
   // \s+\(\s*\w+\s*\)\s*\{\s
   // std::regex patron_double(R"(\bdouble\s+\w+\s*(=\s*\d+(,\d+)?)?\s*;)");
   int numero_linea{0};
@@ -110,14 +110,20 @@ std::vector<Dual> AlmacenarStatements(std::string archivo) {
 /// @return true si hay main
 bool DecidirMain(std::string programa_entrada) {
   std::fstream programa(programa_entrada);
-  std::regex patron_main(R"(int\s+main\((.*\[?\]?)\)\s*\{)");
+  std::regex patron_main(R"(\bint\b\s+main\s*\((.*\[?\]?)\)\s*\{)");
   std::string linea;
   bool hay_main{false};
+  bool comentario{true};
   while(getline(programa, linea)) {
     if(std::regex_search(linea, patron_main)) {
-      hay_main = true;
+      for(auto& word : linea) {
+        if(word == '/') {
+          comentario = false;
+        }
+      }
     }
   }
+  hay_main = comentario;
   return hay_main;
 }
 

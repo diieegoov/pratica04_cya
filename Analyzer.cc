@@ -92,27 +92,57 @@ std::ostream& operator<<(std::ostream& os, const Analyzer& analisis) {
 
   os << std::endl;
 
-  //// STATEMENTS (FOR Y WHILE) ////
+  //// STATEMENTS (FOR Y WHILE) && SWITCH ////
   os << "STATEMENTS:\n";
   int tamaño_statements = analisis.GetStatements().size();
   for(int i = 0; i < tamaño_statements; i++) {
-    os << "[Line " << analisis.GetStatements()[i].GetLinea() << "]";
-    os << " LOOP: ";
     //os << analisis.GetStatements()[i].GetValor() << std::endl;
     bool es_for{false};
+    bool es_switch{false};
     bool acceso{true};
+    bool acceso_switch{true};
     for(auto& word : analisis.GetStatements()[i].GetValor()) {
       if(word == 'f' && acceso) {
         acceso = false;
         es_for = true;
       }
+      if(word == 's' && acceso_switch) {
+        acceso_switch = false;
+        es_switch = true;
+      }
     }
     if(es_for == true) {
+      os << "[Line " << analisis.GetStatements()[i].GetLinea() << "]";
+      os << " LOOP: ";
       os << "for\n";
     }
     if(es_for == false) {
+      os << "[Line " << analisis.GetStatements()[i].GetLinea() << "]";
+      os << " LOOP: ";
       os << "while\n";
     }
+    if((es_switch == true) && (es_for == false)) {
+      os << "[Line " << analisis.GetStatements()[i].GetLinea() << "] ";
+      std::vector<char> switches;
+      int contador_switch_izquierda;
+      int contador_switch_derecha;
+      int contador{0};
+      for(auto& word : analisis.GetStatements()[i].GetValor()) {
+        contador++;
+        if(word == '(') {
+          contador_switch_izquierda = contador;
+        }
+        if(word == ')') {
+          contador_switch_derecha = contador;
+        }
+        switches.push_back(word);
+      }
+      for(int i = contador_switch_izquierda; i < (contador_switch_derecha - 1); i++) {
+        os << switches[i];
+      }
+      os << std::endl;
+    }
+    
   }
   //// STATEMENTS (FOR Y WHILE) ////
 

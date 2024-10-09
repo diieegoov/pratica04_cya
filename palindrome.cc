@@ -36,10 +36,13 @@ void PrintCharsInString(const std::string& cadena) {
 
 int main () {
   const std::string kHello{"Hello"};
-
   std::cout << "Type your name:" << std :: endl;
   std::string name = "";   // Init empty 
   std::cin >> name;
+  int nameless;
+  switch(nameless) {
+        std::cout << "hola";
+      }
   // Read name
   std::cout << kHello + ", " + name + "!" << std::endl;
 
